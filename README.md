@@ -1,22 +1,30 @@
 # elastalert-mattermost-alert
-ElastAlert alert to get Elasticsearch hits into a Mattermost channel, created using the ElastAlerts docs page [ElastAlert Alerts](http://elastalert.readthedocs.io/en/latest/ruletypes.html#alerts)
+ElastAlert alert to get Elasticsearch hits into a Mattermost channel, [ElastAlert Alerts](http://elastalert.readthedocs.io/en/latest/ruletypes.html#alerts)
 
-# How to install this alert
+# MatterMost WebHook
+You need to create mattermost webhook, [documented here](https://docs.mattermost.com/developer/webhooks-incoming.html).  There must be a channel and webhook to send the messages to.
 
-I recommend copying the module to Site-Packages, quick way so it is always found.
+# Install this alert
+This is a simple python module, and I recommend copying the module to Site-Packages, quick way so it is always found.
 ```
-/usr/lib/pythonX.X/site-packages/elastalert_modules
+$ cd /usr/lib/pythonX.X/site-packages
+$ mkdir elastalert_modules
+$ cd elastalert_modules
+$ touch __init__.py
+$ cp /tmp/mattermost_alert.py .
 ```
-Or you can add to sys path.
-
-# Sample rule
-You need to create mattermost webhook, [documented here](https://docs.mattermost.com/developer/webhooks-incoming.html).
-
-Then add these four mandatory fields to the alert yaml file and the hits from the elastalert rulle will be sent to MatterMost channel.
+This means that ElastAlert will import the alert with 
 ```
-alert: "elastalert_modules.mattermost_alert.MatterMostAlerter"
-mattermost_webhook_url: "https://<fqdn>/hooks/<webhookId>"
-error_description_field: "ErrorDesc"
+from elastalert_modules.mattermost_alert import MatterMostAlerter
+```
+This means that the folder must be in a location where it can be imported as a python module.
+
+# ElastAlert Configuration file
+
+There are four mandataory fields that must be added to a ElastAlert 
+``alert: "elastalert_modules.mattermost_alert.MatterMostAlerter"`` - location of the module and class
+``mattermost_webhook_url: "https://<fqdn>/hooks/<webhookId>"`` - URL of the Mattermost WebHook
+``error_description_field: "ErrorDesc"``
 alert_name_field: "MessageFlow"
 ```
 
