@@ -31,6 +31,7 @@ There are four mandataory fields that must be added to a ElastAlert
 
 ``alert_name_field: "<field-name>"`` - Set this to a field in the hit that contains the main error payload 
 
+Sample elastalert configuration file included in example_rules
 
 ## ElastAlert - [Read the Docs](http://elastalert.readthedocs.org).
 
