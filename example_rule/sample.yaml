@@ -1,0 +1,16 @@
+es_host: localhost
+es_port: 9200
+name: MatterMost Test Alert
+type: any
+index: filebeat-exception*
+num_events: 1
+timeframe:
+    minutes: 1
+filter:
+- query:
+    query_string:
+      query: "_type: exception-log"
+alert: "elastalert_modules.mattermost_alert.MatterMostAlerter"
+mattermost_webhook_url: "https://random.host.com/hooks/mn53yrosqprytedundeok34hwc"
+error_description_field: "ErrorDesc"
+alert_name_field: "MessageFlow"
