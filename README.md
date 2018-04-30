@@ -22,11 +22,15 @@ This means that the folder must be in a location where it can be imported as a p
 # ElastAlert Configuration file
 
 There are four mandataory fields that must be added to a ElastAlert 
+
 ``alert: "elastalert_modules.mattermost_alert.MatterMostAlerter"`` - location of the module and class
+
 ``mattermost_webhook_url: "https://<fqdn>/hooks/<webhookId>"`` - URL of the Mattermost WebHook
-``error_description_field: "ErrorDesc"``
-alert_name_field: "MessageFlow"
-```
+
+``error_description_field: "<field-name>"`` - Set this to a field in the hit that contains the error name 
+
+``alert_name_field: "<field-name>"`` - Set this to a field in the hit that contains the main error payload 
+
 
 ## ElastAlert - [Read the Docs](http://elastalert.readthedocs.org).
 
