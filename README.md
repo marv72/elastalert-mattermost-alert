@@ -1,4 +1,4 @@
-# elastalert-mattermost-alert
+# Elastalert Mattermost Alert
 ElastAlert alert to get Elasticsearch hits into a Mattermost channel, [ElastAlert Alerts](http://elastalert.readthedocs.io/en/latest/ruletypes.html#alerts)
 
 # MatterMost WebHook
